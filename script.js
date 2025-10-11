@@ -98,7 +98,7 @@ function showToast() {
     toast.innerHTML = h4 + p;
 
     toast.classList.add('show');
-    // setTimeout(() => {
-    //     toast.classList.remove('show')
-    // }, 2000);
+    setTimeout(() => {
+        toast.classList.remove('show')
+    }, 2000);
 }
