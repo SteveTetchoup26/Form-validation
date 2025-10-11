@@ -292,6 +292,7 @@ small {
   font-weight: bold;
   opacity: 0;
   transition: all 0.5s ease;
+  z-index: 999;
 }
 
 .toast.show {
@@ -384,5 +385,10 @@ small {
 
     .bottom-form {
         flex-direction: column;
+    }
+
+    .toast {
+      width: 80%;
+      padding: 8px 20px;
     }
 }
