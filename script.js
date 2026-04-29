@@ -103,4 +103,4 @@
 //     }, 2000);
 // }
 
-console.log("Form validation v0.1.0 - En cours de développement");
+console.log("Form validation v1.1.0 - En cours de développement");
