@@ -102,5 +102,4 @@
 //         toast.classList.remove('show')
 //     }, 2000);
 // }
-
-console.log("Form validation v1.1.0 - En cours de développement");
+alert("Form validation v1.1.0 - En cours de développement");
