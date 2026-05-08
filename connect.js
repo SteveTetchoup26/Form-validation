@@ -1,1 +1,3 @@
-function connect() {}
+function connect() {
+    let isConnected = false;
+}
