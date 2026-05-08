@@ -1,0 +1,36 @@
+name: CamerPay - CI/CD Pipeline
+
+on:
+    push:
+        branches: [ main ]
+    pull_request:
+        branches: [ main ]
+jobs:
+    validation:
+        name: Validation du code
+        runs-on: ubuntu-latest
+        steps:
+          - name: Récupérer le code
+            uses: actions/checkout@v4
+          - name: Vérifer l'absence de console.log
+            run: |
+              if grep -rn 'console.log' --include='*.js' .; then
+                echo 'Erreur: Des console.log ont été trouvés'
+                exit 1
+              fi
+              echo 'OK: Aucun console.log trouvé.'
+    
+    deploy:
+        name: Déploiement simulation
+        runs-on: ubuntu-latest
+        needs: validation
+        if: github.ref == 'refs/heads/main'
+        steps:
+          - name: Simulation déploiement CamerPay
+            run: |
+              echo '=================================='
+              echo ' CamrerPay - Déploiement automatique'
+              echo '=================================='
+              echo 'npm install...'
+              echo 'Redémarrage serveur Node.js...'
+              echo 'Deploiement réussi !'
