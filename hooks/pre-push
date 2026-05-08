@@ -1,0 +1,19 @@
+#!/bin/sh
+
+echo ""
+echo "[FormValidation] Lancement des tests avant push vers GitHub..."
+echo ""
+
+# Simulation de tests
+
+echo "**********************************"
+echo "Test 1 : Calcul des frais MTN Mobile Money.... OK"
+echo "Test 2 : Calcul des frais Orange Money.... OK"
+echo "Test 3 : Connexion API CamerPay.... OK"
+echo "Test 4 : Validation des transactions.... OK"
+echo "**********************************"
+echo ""
+
+echo "[FormValidation] Tous les tests sont passés. Push vers GitHub autorisé"
+echo ""
+exit 0

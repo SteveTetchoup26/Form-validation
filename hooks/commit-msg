@@ -1,0 +1,26 @@
+#!/bin/sh
+
+echo ""
+echo "[FormValidation] Verfication commit-msg en cours..."
+
+MESSAGE=$(cat "$1")
+
+# Ignorer les messages de merge automatiques
+
+if echo "$MESSAGE" | grep -q "^Merge"; then
+	exit 0
+fi
+
+PATTERN="^(feat|fix|docs|test|style|chore|refactor|perf|ci|build|revert)(\([a-z]+\))?:.{1,100}$"
+
+if ! echo "$MESSAGE" | grep -qE "$PATTERN"; then
+	echo "***************************************************"
+	echo "[FormValidation] Erreur: Message de commit non conforme !!!!"
+	echo "Format attendu : <type>(<scope>): <description>"
+	echo "Types autorisés : feat, fix, docs, test, style, chore, refactor, perf, ci, build, revert"
+	echo "***************************************************"
+	exit 1
+fi
+
+echo "[FormValidation] Message de commit valide."
+exit 0

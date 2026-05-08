@@ -1,0 +1,27 @@
+#!/bin/sh
+# ===================================
+# Hook pre-commit de form validation
+# Verifie qu'aucun console.log n'est présent dans les fichiers .js
+# ===================================
+
+echo "[FormValidation] Verfication pre-commit en cours..."
+
+# Récuperer les fichers .js modifiés et prêtes pour le commit
+FICHIERS_JS=$(git diff --cached --name-only --diff-filter=ACM | grep '\.js$')
+
+if [ -z "$FICHIERS_JS" ]; then
+	echo "[FormValidation] Aucun fichier JS à vérifier"
+	exit 0
+fi
+
+RESULTATS=$(grep -n 'console\.log' $FICHIERS_JS 2>/dev/null)
+
+if [ ! -z "$RESULTATS" ]; then
+	echo "[FormValidation] ERREUR : Des console.log ont été trouvés !!!"
+	echo $RESULTATS
+	echo "Supprimer ou commenter ces console.log avant de commiter"
+	exit 1
+fi
+
+echo "[FormValidation] Vérification OK. Aucun console.log trouvé."
+exit 0
